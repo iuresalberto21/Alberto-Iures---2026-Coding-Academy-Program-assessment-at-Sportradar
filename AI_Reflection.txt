@@ -1,0 +1,31 @@
+AI Reflection – Sports Event Calendar
+
+I used AI tools as a helper during the development of this project, mainly for:
+- exploring alternative solutions,
+- improving certain parts of the layout and responsiveness,
+- and validating my own ideas.
+
+I did NOT use AI to generate the entire project. Instead, I focused on understanding the logic and writing the final code myself.
+
+Concrete examples of how I used AI:
+
+1. Calendar layout and Monday-first logic
+   Initially, I looked up how JavaScript handles days of the week with getDay(), and I asked AI for different ways to convert that into a Monday-first index. Based on that, I implemented my own helper function getDayOfWeekEU(), which converts Sunday from 0 to 6 and shifts the rest of the days accordingly. I tested this on November 2025 to make sure that the days align correctly (e.g. Monday under "Mon", Tuesday under "Tue", etc.).
+
+2. Displaying days from previous and next month
+   I used AI to better understand how other calendar implementations fill empty cells at the beginning and end of the month. With that inspiration, I wrote my own logic to compute days from the previous and next month and render them with a separate CSS class (.other-month). This made the calendar look like a real, complete month grid without empty cells.
+
+3. Responsive design and visual polish
+   I asked AI for suggestions on how to use CSS Grid and media queries to make the calendar responsive on mobile, tablet and desktop. I then adapted these ideas to my own layout, adjusted the breakpoints, and chose my own values for heights, font sizes and spacing. The final styling is my own dark theme, including the scrollable list of events inside each day.
+
+4. AI as a learning and review tool
+   In general, I used AI as a way to compare my approach to other possible solutions, not as a “black box” that writes code for me. Whenever I adopted an idea, I rewrote it in my own style and integrated it into my existing structure, making sure that I understand every line and that it fits the requirements of the challenge.
+
+Summary
+
+AI helped me:
+- explore alternatives,
+- speed up research on specific frontend problems (calendar alignment, responsiveness),
+- and review my decisions.
+
+The final code, structure and logic are the result of my own understanding and implementation, with AI acting more like a mentor than an automatic code generator.

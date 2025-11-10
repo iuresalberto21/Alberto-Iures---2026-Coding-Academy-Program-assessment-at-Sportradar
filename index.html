@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sports Event Calendar</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav class="topbar">
+    <div class="brand">🏆 Sports Calendar</div>
+    <input id="nav-toggle" type="checkbox" class="nav-toggle" />
+    <label for="nav-toggle" class="burger">☰</label>
+    <ul class="nav">
+      <li><a href="#/calendar" class="nav-link" data-page="calendar">Calendar</a></li>
+      <li><a href="#/add" class="nav-link" data-page="add">Add Event</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main id="app" class="container"></main>
+
+  <!-- TEMPLATE: CALENDAR VIEW -->
+  <template id="tpl-calendar">
+    <section class="calendar-wrapper">
+      <header class="cal-header">
+        <h1 id="monthLabel"></h1>
+        <div class="filters">
+          <label>
+            Sport:
+            <select id="sportFilter">
+              <option value="">All Sports</option>
+            </select>
+          </label>
+        </div>
+      </header>
+
+      <section class="weekdays">
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+        <div>Sun</div>
+      </section>
+
+      <section id="grid" class="grid"></section>
+
+      <p class="legend">
+        <span class="dot"></span>
+        Days with scheduled events
+      </p>
+    </section>
+  </template>
+
+  <!-- TEMPLATE: EVENT DETAIL VIEW -->
+  <template id="tpl-event">
+    <article class="card event-detail">
+      <a href="#/calendar" class="backlink">← Back to Calendar</a>
+      <h1 class="event-title"></h1>
+      <ul class="event-meta">
+        <li>
+          <strong>📅 Date:</strong>
+          <span data-field="date"></span>
+        </li>
+        <li>
+          <strong>🕐 Time:</strong>
+          <span data-field="time"></span>
+        </li>
+        <li>
+          <strong>⚽ Sport:</strong>
+          <span data-field="sport"></span>
+        </li>
+        <li>
+          <strong>🏟️ Teams:</strong>
+          <span data-field="title"></span>
+        </li>
+        <li>
+          <strong>📊 Status:</strong>
+          <span data-field="status"></span>
+        </li>
+      </ul>
+    </article>
+  </template>
+
+  <!-- TEMPLATE: ADD EVENT FORM -->
+  <template id="tpl-add">
+    <article class="card">
+      <form id="addForm" class="form">
+        <h1>Add New Event</h1>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Date *</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+          <div class="form-group">
+            <label for="time">Time *</label>
+            <input type="time" id="time" name="time" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="sport">Sport *</label>
+            <input 
+              type="text" 
+              id="sport" 
+              name="sport" 
+              placeholder="e.g., Football, Ice Hockey, Basketball" 
+              required 
+            />
+          </div>
+          <div class="form-group">
+            <label for="title">Teams / Title *</label>
+            <input 
+              type="text" 
+              id="title" 
+              name="title" 
+              placeholder="e.g., Salzburg vs. Sturm" 
+              required 
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status" name="status">
+              <option value="scheduled">Scheduled</option>
+              <option value="played">Played</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Add Event</button>
+          <a href="#/calendar" class="btn btn-secondary">Cancel</a>
+        </div>
+      </form>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
